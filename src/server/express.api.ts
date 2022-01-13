@@ -3,12 +3,12 @@ import { json, urlencoded } from "body-parser";
 import * as compression from "compression";
 import * as express from "express";
 import * as http from "http";
+import { AppRouter } from "./app.router";
 
 
 export class ExpressApi {
-  public app: express.Express;
+  private app: express.Express;
 
-  
   
   constructor() {
     
@@ -28,11 +28,12 @@ export class ExpressApi {
     this.app.use(json({ limit: "50mb" }));
     this.app.use(compression());
     this.app.use(urlencoded({ limit: "50mb", extended: true }));
+    this.app.use(AppRouter.getInstance());
     
   }
 
   private configureBaseRoute() {
-    this.app.use((request, res, next) => {
+    AppRouter.getInstance().get("/",(request, res, next) => {
       if (request.url === "/") {
         return res.json({health: 'alive'})
       } else {
@@ -48,7 +49,6 @@ export class ExpressApi {
   public run() {
     const port = 3000;
     const server = http.createServer(this.app);
- 
     server.listen(port,()=>console.log("%s started on port:%d",process.env.npm_package_name,port));
     server.on("error", this.onError);
    
