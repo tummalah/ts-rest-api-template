@@ -1,9 +1,11 @@
-import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
+
 import { json, urlencoded } from "body-parser";
 import * as compression from "compression";
 import * as express from "express";
 import * as http from "http";
 import { AppRouter } from "./app.router";
+import './controllers/indexController';
+
 
 
 export class ExpressApi {
@@ -20,7 +22,7 @@ export class ExpressApi {
 
   private configure() {
     this.configureMiddleware();
-    this.configureBaseRoute();
+ 
 
   }
 
@@ -32,16 +34,7 @@ export class ExpressApi {
     
   }
 
-  private configureBaseRoute() {
-    AppRouter.getInstance().get("/",(request, res, next) => {
-      if (request.url === "/") {
-        return res.json({health: 'alive'})
-      } else {
-        next();
-      }
-    });
-    
-  }
+ 
 
 
 
