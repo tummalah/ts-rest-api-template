@@ -5,6 +5,7 @@ import * as express from "express";
 import * as http from "http";
 import { AppRouter } from "./app.router";
 import './controllers/indexController';
+import './controllers/userController';
 
 
 
