@@ -25,12 +25,7 @@ class UserController {
     
     let user = await this.serviceLocator.userService.getUser(userDto);
 
-      res.send(`
-        <div>
-          <div>Welcome to TS Express BoilerPlate!! ${user.name}</div>
-          
-        </div>
-      `);
+      res.render('welcome',{userName:user.name});
     } 
   }
 

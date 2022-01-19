@@ -9,17 +9,13 @@ import { AppRouter } from '../app.router';
 @controller('',AppRouter.getInstance())
 class IndexController {
   @get('/')
-  @middleware((req,res,next)=> {console.log(req.hostname); next()})
-  getRoot(req: Request, res: Response) {
-  
-      res.render("index");
+  getRoot(req: any, res: Response) {
+  //TODO temorarily making req any
+      const user = req.userContext ? req.userContext.userinfo : null;
+      res.render("index",{ isAuthenticated: req.isAuthenticated(), user });
     } 
 
-    @get('/login')
-    getLogin(req: Request, res: Response) {
-  
-      res.redirect("/users");
-    }
+ 
 
     @get('/logout')
     getLogout(req: Request, res: Response) {
