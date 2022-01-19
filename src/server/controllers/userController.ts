@@ -6,6 +6,7 @@ import UserServiceLocator from './userServiceLocator';
 import { DI_TYPES } from './di-types';
 import IuserDto from '../../services/userDto';
 import container from "./di-container";
+import { isAuthenticated } from './middleware/sessionAuth';
 
 
 //const userServiceLocator = container.get<UserServiceLocator>(DI_TYPES.UserServiceLocator); // alternate method to inject Service locator once
@@ -17,6 +18,7 @@ class UserController {
     constructor( private serviceLocator: UserServiceLocator ){}
    
   @get('/')
+  @middleware((req : any,res,next)=> {isAuthenticated(req,res,next)})
  async getUser(req: Request, res: Response) {
   
     const userDto: IuserDto = {id: '1001'};

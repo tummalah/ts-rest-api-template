@@ -6,12 +6,16 @@ import * as http from "http";
 import { AppRouter } from "./app.router";
 import './controllers/indexController';
 import './controllers/userController';
+import { ExpressOIDC } from "@okta/oidc-middleware";
+import * as session from "express-session";
+import path = require("path");
+
 
 
 
 export class ExpressApi {
   private app: express.Express;
-
+  private oidc: ExpressOIDC;
   
   constructor() {
     
@@ -22,20 +26,50 @@ export class ExpressApi {
   }
 
   private configure() {
+    this.registerOidc();
+    this.registerViews();
     this.configureMiddleware();
+    this.addLocals();
  
 
   }
 
+  private registerViews(){
+    this.app.set( "views", path.join( __dirname,".." ,"views" ) );
+    this.app.set( "view engine", "ejs" );
+  }
+  private registerOidc()
+  {
+     this.oidc = new ExpressOIDC( {
+      
+      client_id: process.env.OKTA_CLIENT_ID,
+      client_secret: process.env.OKTA_CLIENT_SECRET,
+      issuer: `${ process.env.OKTA_ORG_URL }/oauth2/default`,
+      redirect_uri: `${ process.env.HOST_URL }/authorization-code/callback`,
+      appBaseUrl:`${ process.env.HOST_URL }`,
+      scope: "openid profile"
+  } );
+  
+
+  }
   private configureMiddleware() {
     this.app.use(json({ limit: "50mb" }));
     this.app.use(compression());
     this.app.use(urlencoded({ limit: "50mb", extended: true }));
+    this.app.use(session( {
+      resave: true,
+      saveUninitialized: false,
+      secret: process.env.SESSION_SECRET
+        } ));
+    this.app.use(this.oidc.router);
     this.app.use(AppRouter.getInstance());
     
   }
 
- 
+  private addLocals(){
+    this.app.locals.oidc=this.oidc;
+    
+  }
 
 
 

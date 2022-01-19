@@ -12,13 +12,21 @@ class IndexController {
   @middleware((req,res,next)=> {console.log(req.hostname); next()})
   getRoot(req: Request, res: Response) {
   
-      res.send(`
-        <div>
-          <div>Welcome to TS Express BoilerPlate!! Happy Coding!!</div>
-          
-        </div>
-      `);
+      res.render("index");
     } 
+
+    @get('/login')
+    getLogin(req: Request, res: Response) {
+  
+      res.redirect("/users");
+    }
+
+    @get('/logout')
+    getLogout(req: Request, res: Response) {
+  
+      res.redirect("/");
+    }
+
   }
 
  
