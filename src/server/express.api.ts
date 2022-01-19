@@ -41,7 +41,7 @@ export class ExpressApi {
 
 
   public run() {
-    const port = 3000;
+    const port = process.env.PORT;
     const server = http.createServer(this.app);
     server.listen(port,()=>console.log("%s started on port:%d",process.env.npm_package_name,port));
     server.on("error", this.onError);

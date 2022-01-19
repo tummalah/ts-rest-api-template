@@ -3,3 +3,4 @@ mypoc-251819-77a832211c5f.json
 issue.jpg
 /dist/
 .npmrc
+.env
