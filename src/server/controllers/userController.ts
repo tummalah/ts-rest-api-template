@@ -31,5 +31,5 @@ class UserController {
   }
 
   // initialize controller instance to lock 'this' for service locator
- let register= new UserController(container.get<UserServiceLocator>(DI_TYPES.UserServiceLocator));
+ const register= new UserController(container.get<UserServiceLocator>(DI_TYPES.UserServiceLocator));
 
