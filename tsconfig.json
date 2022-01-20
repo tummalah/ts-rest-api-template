@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": false,
-    "target": "es5",
+    "target": "es6",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": ".",

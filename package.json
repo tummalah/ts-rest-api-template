@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "rimraf dist/* && ts-node copyAssets && tsc && node dist/index.js",
+    "clean": "rimraf dist/*",
     "start-dev": "ts-node src/index.ts",
     "copy-assets": "ts-node copyAssets",
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -8,6 +8,7 @@ export function lockThis<T extends { new(...args: any[]): {} }>(constructor: T) 
     };
     const proto = constructor.prototype;
     Object.getOwnPropertyNames(proto).forEach(key => {
+    
       if (key === 'constructor') {
         return;
       }
