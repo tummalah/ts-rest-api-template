@@ -1,8 +1,9 @@
 //TODO customize Express Request Interface to include Okta Types
 
-import { Request, Response, NextFunction } from 'express';
+import {  Response, NextFunction } from 'express';
+import {IoktaRequest} from '../../../server/helpers/types/oktaRequest';
 
-export function isAuthenticated(req:any,res:Response, next:NextFunction){
+export function isAuthenticated(req:IoktaRequest,res:Response, next:NextFunction){
     if (req.isAuthenticated()){
         
         next()

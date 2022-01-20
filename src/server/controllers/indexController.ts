@@ -1,5 +1,7 @@
-import { Request, Response } from 'express';
+
+import {  Response,Request, } from 'express';
 //TODO issue with paths in ts config not using aliases
+import {IoktaRequest} from '../../server/helpers/types/oktaRequest';
 import { get, controller, middleware } from '../helpers/decorators';
 import { AppRouter } from '../app.router';
 
@@ -9,7 +11,7 @@ import { AppRouter } from '../app.router';
 @controller('',AppRouter.getInstance())
 class IndexController {
   @get('/')
-  getRoot(req: any, res: Response) {
+  getRoot(req: IoktaRequest, res: Response) {
   //TODO temorarily making req any
       const user = req.userContext ? req.userContext.userinfo : null;
       res.render("index",{ isAuthenticated: req.isAuthenticated(), user });
