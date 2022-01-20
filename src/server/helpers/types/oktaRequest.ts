@@ -26,11 +26,9 @@ isAuthenticated(): this is AuthenticatedRequest;
 isUnauthenticated(): this is UnauthenticatedRequest;
 
 }
-   
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+        // tslint:disable-next-line:no-empty-interface
 interface AuthInfo {}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+        // tslint:disable-next-line:no-empty-interface
 interface User {}
 interface AuthenticatedRequest extends Request {
     user: User;

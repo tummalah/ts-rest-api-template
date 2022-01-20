@@ -24,12 +24,12 @@ class UserController {
   
     const userDto: IuserDto = {id: '1001'};
     
-    const user = await this.serviceLocator.userService.getUser(userDto);
+    let user = await this.serviceLocator.userService.getUser(userDto);
 
       res.render('welcome',{userName:user.name,user});
     } 
   }
 
   // initialize controller instance to lock 'this' for service locator
- let register= new UserController(container.get<UserServiceLocator>(DI_TYPES.UserServiceLocator));
+ const register= new UserController(container.get<UserServiceLocator>(DI_TYPES.UserServiceLocator));
 

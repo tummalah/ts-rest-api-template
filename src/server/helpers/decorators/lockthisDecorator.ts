@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-types
 export function lockThis<T extends { new(...args: any[]): {} }>(constructor: T) {
     let self: any;
     const locker = class extends constructor {

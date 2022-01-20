@@ -5,7 +5,6 @@ import * as express from 'express';
 
 
 export function controller(routePrefix: string, routerInstance: express.Router ) {
-    // eslint-disable-next-line @typescript-eslint/ban-types
     return function<T extends { new(...args: any[]): {} }>(target: T) {
       const router = routerInstance;
 
