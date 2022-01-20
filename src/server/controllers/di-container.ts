@@ -7,7 +7,7 @@ import UserServiceLocator from '../controllers/userServiceLocator';
 import IUserService from '../../services/userService';
 import UserImpl from '../../services/userImplementation';
 
-let container= new Container();
+const container= new Container();
 
 container.bind<IUserService>(DI_TYPES.IUserService).to(UserImpl);
 container.bind<UserServiceLocator>(DI_TYPES.UserServiceLocator).to(UserServiceLocator);
