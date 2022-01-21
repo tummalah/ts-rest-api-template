@@ -33,9 +33,9 @@ interface AuthInfo {}
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface User {}
 interface AuthenticatedRequest extends Request {
-    user: User;
+    userContext: Record<'userinfo',Profile>;
 }
 
 interface UnauthenticatedRequest extends Request {
-    user?: undefined;
+    userContext?: undefined;
 }

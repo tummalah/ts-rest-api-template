@@ -9,6 +9,7 @@ import './controllers/userController';
 import { ExpressOIDC } from "@okta/oidc-middleware";
 import * as session from "express-session";
 import path = require("path");
+import errorMiddleware from "./controllers/middleware/errorHandler";
 
 
 
@@ -30,6 +31,8 @@ export class ExpressApi {
     this.registerViews();
     this.configureMiddleware();
     this.addLocals();
+    this.initializeErrorHandling();
+
  
 
   }
@@ -63,6 +66,7 @@ export class ExpressApi {
         } ));
     this.app.use(this.oidc.router);
     this.app.use(AppRouter.getInstance());
+    //this.app.use(errorMiddleware);
     
   }
 
@@ -71,7 +75,9 @@ export class ExpressApi {
     
   }
 
-
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware);
+  }
 
 
   public run() {

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 //TODO issue with paths in ts config not using aliases
 import { get, controller, middleware, lockThis } from '../helpers/decorators';
 import { AppRouter } from '../app.router';
@@ -8,6 +8,7 @@ import IuserDto from '../../services/userDto';
 import container from "./di-container";
 import { isAuthenticated } from './middleware/sessionAuth';
 import {IoktaRequest} from '../../server/helpers/types/oktaRequest';
+import HttpException from '../helpers/exceptions/httpException';
 
 
 //const userServiceLocator = container.get<UserServiceLocator>(DI_TYPES.UserServiceLocator); // alternate method to inject Service locator once
@@ -20,13 +21,13 @@ class UserController {
    
   @get('/')
   @middleware((req : IoktaRequest,res,next)=> {isAuthenticated(req,res,next)})
- async getUser(req: Request, res: Response) {
+ async getUser(req: Request, res: Response, next: NextFunction) {
   
     const userDto: IuserDto = {id: '1001'};
     
     const user = await this.serviceLocator.userService.getUser(userDto);
-
-      res.render('welcome',{userName:user.name,user});
+      
+     res.render('welcome',{userName:user.name,user});
     } 
   }
 

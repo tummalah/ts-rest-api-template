@@ -4,6 +4,7 @@ import {  Response, NextFunction } from 'express';
 import {IoktaRequest} from '../../../server/helpers/types/oktaRequest';
 
 export function isAuthenticated(req:IoktaRequest,res:Response, next:NextFunction){
+    
     if (req.isAuthenticated()){
         
         next()
