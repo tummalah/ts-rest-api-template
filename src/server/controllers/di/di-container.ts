@@ -3,9 +3,9 @@ import "reflect-metadata";
 import { Container } from "inversify";
 
 import {DI_TYPES} from './di-types';
-import UserServiceLocator from '../controllers/userServiceLocator';
-import IUserService from '../../services/userService';
-import UserImpl from '../../services/userImplementation';
+import UserServiceLocator from '../../controllers/userServiceLocator';
+import IUserService from '../../../services/userService';
+import UserImpl from '../../../services/userImplementation';
 
 const container= new Container();
 

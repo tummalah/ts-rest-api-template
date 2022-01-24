@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
 import IUserService from "../../services/userService";
-import { DI_TYPES } from "./di-types";
+import { DI_TYPES } from "./di/di-types";
 
 @injectable()
 export default class UserServiceLocator {
