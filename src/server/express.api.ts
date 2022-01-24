@@ -10,6 +10,8 @@ import { ExpressOIDC } from "@okta/oidc-middleware";
 import * as session from "express-session";
 import path = require("path");
 import errorMiddleware from "./controllers/middleware/errorHandler";
+import * as swaggerDocument from '../../swagger.json';
+import * as swaggerUi from 'swagger-ui-express';
 
 
 
@@ -65,8 +67,9 @@ export class ExpressApi {
       secret: process.env.SESSION_SECRET
         } ));
     this.app.use(this.oidc.router);
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     this.app.use(AppRouter.getInstance());
-    //this.app.use(errorMiddleware);
+   
     
   }
 
