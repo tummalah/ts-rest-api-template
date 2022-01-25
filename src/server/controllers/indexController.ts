@@ -4,6 +4,8 @@ import {  Response,Request, } from 'express';
 import {IoktaRequest} from '../../server/helpers/types/oktaRequest';
 import { get, controller, middleware } from '../helpers/decorators';
 import { AppRouter } from '../app.router';
+import { logging } from '../helpers/logger/logmanager';
+const logger = logging.getLogger('controllers');
 
 
 
@@ -12,7 +14,8 @@ import { AppRouter } from '../app.router';
 class IndexController {
   @get('/')
   getRoot(req: IoktaRequest, res: Response) {
-  //TODO temorarily making req any
+      logger.warn('inside home page')
+      logger.info("Host:"+req.hostname)
       const user = req.userContext ? req.userContext.userinfo : null;
       res.render("index",{ isAuthenticated: req.isAuthenticated(), user });
     } 
