@@ -4,10 +4,12 @@
   "description": "boilerplate for REST API in NodeJS,Express projects",
   "main": "dist/index.js",
   "scripts": {
-    "start": "rimraf dist/* && ts-node copyAssets && tsc && node dist/index.js",
+    "start": "node dist/index.js",
+    "start:local": "rimraf dist/* && ts-node copyAssets && tsc && node dist/index.js",
+    "build": "rimraf dist/* && ts-node copyAssets && tsc",
     "clean": "rimraf dist/*",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "start-dev": "ts-node src/index.ts",
+    "start:dev": "ts-node src/index.ts",
     "copy-assets": "ts-node copyAssets",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
@@ -67,5 +69,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

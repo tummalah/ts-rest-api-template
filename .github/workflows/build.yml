@@ -1,0 +1,57 @@
+name: Releases
+on:
+  push:
+    branches:
+      - server-setup
+env:
+ dockerRegistry: hrtummala
+ builder: "gcr.io/buildpacks/builder"
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com/tummalah'
+      - name: install dependencies
+        run: npm ci
+
+      - name: run build
+        run: npm run build
+      
+      - name: setup pack
+        run: |
+          sudo add-apt-repository ppa:cncf-buildpacks/pack-cli
+          sudo apt-get update
+          sudo apt-get install pack-cli
+        
+
+      - name: conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.7.1
+        with:
+          github-token: ${{ secrets.github_token  }}
+
+     - name: Build app with pack CLI
+       run: |
+        pack config default-builder ${{ env.builder }}
+        pack --version
+        echo "APP_NAME=$(jq -r .name package.json)">> $GITHUB_ENV
+        pack build  --path .   --publish ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
+
+      - name: create release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token  }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+      
+      # - run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GIT_REGISTRY }}
