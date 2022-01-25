@@ -1,5 +1,5 @@
 import * as fs from 'fs'
-import {swUserController} from './controllers/userController'
+import {swUserController} from './controllers/userSwagger'
 const swagger = {
     openapi: '3.0.0',
     info: {

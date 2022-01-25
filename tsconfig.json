@@ -11,12 +11,7 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": ".",
-   
-    "paths": {
-      "@ht/*": ["./src/*"]
-    },
-    
-    "incremental": true,
+   "incremental": true,
     "resolveJsonModule": true,
     
   },

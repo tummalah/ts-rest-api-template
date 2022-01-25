@@ -11,43 +11,11 @@ import {IoktaRequest} from '../../server/helpers/types/oktaRequest';
 import HttpException from '../helpers/exceptions/httpException';
 import CreateUserDto from '../../services/createUserDto';
 import bodyValidator from './middleware/bodyValidator';
-import createUserSchema from './userSchema';
+
 
 
 //const userServiceLocator = container.get<UserServiceLocator>(DI_TYPES.UserServiceLocator); // alternate method to inject Service locator once
-// swagger info
- const swPostUser = {
-  "summary": "Create the new user",
-  "tags": [
-    "postUser"
-  ],
-  "requestBody": {
-    "content": {
-      "application/json": {
-        "schema": {
-          ...createUserSchema
-        }
-      }
-    }
-  },
-  "responses": {
-    "201": {
-      "description": "User created"
-    },
-    "default": {
-      "description": "Error message"
-    }
-  }
-}
 
-export const swUserController = {
-  "/user": {
-    
-    "post": {
-      ...swPostUser
-    }
-  }
-}
 
 
 @controller('/user',AppRouter.getInstance())
