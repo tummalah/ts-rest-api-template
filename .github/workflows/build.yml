@@ -47,7 +47,8 @@ jobs:
          pack config default-builder ${{ env.builder }}
          pack --version
          echo "APP_NAME=$(jq -r .name package.json)">> $GITHUB_ENV
-         pack build  --path ./dist   --publish ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
+         pack build  --path ./dist  ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
+         docker push ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
          
 
       -  name: create release
