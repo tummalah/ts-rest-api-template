@@ -45,21 +45,23 @@ jobs:
       - name: Build app with pack CLI
         run: |
          pack config default-builder ${{ env.builder }}
-         
+         echo "APP_NAME=$(jq -r .name package.json)">> $GITHUB_ENV
          echo ${{ env.dockerRegistry }}
-         pack build  --path ./dist ${{ env.dockerRegistry }}:${{ steps.changelog.outputs.tag }}
-         docker push ${{ env.dockerRegistry }}:${{ steps.changelog.outputs.tag }}
+         pack build  --path ./dist ${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
+         # not publishing image for now
+         #docker tag ${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }} <repo>
+         #docker push <repo>
          
 
-#       -  name: create release
-#          uses: actions/create-release@v1
-#          if: ${{ steps.changelog.outputs.skipped == 'false' }}
-#          env:
-#           GITHUB_TOKEN: ${{ secrets.github_token  }}
-#          with:
-#           tag_name: ${{ steps.changelog.outputs.tag }}
-#           release_name: ${{ steps.changelog.outputs.tag }}
-#           body: ${{ steps.changelog.outputs.clean_changelog }}
+      -  name: create release
+         uses: actions/create-release@v1
+         if: ${{ steps.changelog.outputs.skipped == 'false' }}
+         env:
+          GITHUB_TOKEN: ${{ secrets.github_token  }}
+         with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
       
       # - run: npm publish
       #   env:
