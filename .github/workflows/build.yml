@@ -4,7 +4,7 @@ on:
     branches:
       - server-setup
 env:
- dockerRegistry: "hrtummala"
+ dockerRegistry: "hrtummala/ts-rest-api-template"
  builder: "gcr.io/buildpacks/builder"
 jobs:
   build-publish:
@@ -46,7 +46,7 @@ jobs:
         run: |
 
          echo "APP_NAME=$(jq -r .name package.json)">> $GITHUB_ENV
-         echo ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
+         echo ${{ env.dockerRegistry }}
          #pack build  --path ./dist  ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
          #docker push ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
          
