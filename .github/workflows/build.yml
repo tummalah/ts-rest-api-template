@@ -44,10 +44,10 @@ jobs:
 
       - name: Build app with pack CLI
         run: |
-
+         pack config default-builder ${{ env.builder }}
          echo "APP_NAME=$(jq -r .name package.json)">> $GITHUB_ENV
          echo ${{ env.dockerRegistry }}
-         #pack build  --path ./dist  ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
+         pack build  --path ./dist ${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
          #docker push ${{ env.dockerRegistry }}/${{ env.APP_NAME }}:${{ steps.changelog.outputs.tag }}
          
 
