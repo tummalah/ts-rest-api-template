@@ -34,7 +34,7 @@ jobs:
           sudo add-apt-repository ppa:cncf-buildpacks/pack-cli
           sudo apt-get update
           sudo apt-get install pack-cli
-          echo "APP_NAME=$(jq -r .name package.json)">> $GITHUB_ENV
+          
         
 
       - name: conventional Changelog Action
@@ -42,6 +42,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3.7.1
         with:
           github-token: ${{ secrets.github_token  }}
+      
       - name: get app and version
         run: |
          echo "APP_NAME=$(jq -r .name package.json)">> $GITHUB_ENV
@@ -71,3 +72,5 @@ jobs:
       # - run: npm publish
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.GIT_REGISTRY }}
+
+    

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest-api-template
+  namespace:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 
+  template:
+    metadata:
+      labels:
+        app: 
+    spec:
+      containers:
+        - name: rest-api-template
+          image: registry.com/rest-api-template:0.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          volumeMounts:
+            - mountPath: "/workspace/.env"
+              readOnly: true
+              name: secrets
+              subPath: rest-api-template
+          resources:
+            limits:
+              cpu: 250m
+              memory: 200Mi
+            requests:
+              cpu: 125m
+              memory: 100Mi
+      volumes:
+        - name: secrets
+          secret:
+            secretName: rest-api-template

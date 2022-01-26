@@ -4,3 +4,4 @@ issue.jpg
 /dist/
 .npmrc
 .env
+kustomize
