@@ -10,7 +10,7 @@ import { ExpressOIDC } from "@okta/oidc-middleware";
 import * as session from "express-session";
 import path = require("path");
 import errorMiddleware from "./controllers/middleware/errorHandler";
-import * as swaggerDocument from '../../swagger.json';
+import * as swaggerDocument from './swagger.json';
 import * as swaggerUi from 'swagger-ui-express';
 
 

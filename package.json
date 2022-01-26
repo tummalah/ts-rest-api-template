@@ -4,16 +4,15 @@
   "description": "boilerplate for REST API in NodeJS,Express projects",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node index.js",
     "start:local": "rimraf dist/* && ts-node copyAssets && tsc && node dist/index.js",
-    "build": "rimraf dist/* && ts-node copyAssets && tsc",
+    "build": "rimraf dist/*  && tsc --build && ts-node copyAssets",
     "clean": "rimraf dist/*",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "start:dev": "ts-node src/index.ts",
     "copy-assets": "ts-node copyAssets",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
-    "prepare": "husky install",
     "swagger": "ts-node src/server/swagger.def.ts"
   },
   "keywords": [
@@ -41,10 +40,8 @@
     "joi": "^17.5.0",
     "joi-to-swagger": "^6.0.1",
     "lint-staged": "^12.2.2",
-    "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.5",
-    
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   },
@@ -58,9 +55,10 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.3.0",
     "tsconfig-paths": "^3.12.0",
-    "tscpaths": "^0.0.9",
-    "swagger-ui-express": "^4.3.0"
+    "tscpaths": "^0.0.9"
   },
   "files": [
     "dist/**/*"

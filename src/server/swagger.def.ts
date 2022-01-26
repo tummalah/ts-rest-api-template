@@ -20,7 +20,7 @@ const swagger = {
   
 
   function GenerateSwagger(){
-      fs.writeFileSync('swagger.json', JSON.stringify(swagger));
+      fs.writeFileSync('src/server/swagger.json', JSON.stringify(swagger));
   }
   GenerateSwagger();
 
