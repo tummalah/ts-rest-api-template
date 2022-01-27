@@ -1,4 +1,13 @@
-# 1.1.0 (2022-01-26)
+# [1.2.0](https://github.com/tummalah/ts-rest-api-template/compare/v1.1.0...v1.2.0) (2022-01-27)
+
+
+### Features
+
+* **k8s:** added kustomize for deployments ([5b2d61e](https://github.com/tummalah/ts-rest-api-template/commit/5b2d61e279801366c3c7b433e3038644b776e991))
+
+
+
+# [1.1.0](https://github.com/tummalah/ts-rest-api-template/compare/8c7b546f3c10eb93a2628a567a6f3d7851128e9d...v1.1.0) (2022-01-26)
 
 
 ### Bug Fixes
