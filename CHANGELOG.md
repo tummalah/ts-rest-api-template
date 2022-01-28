@@ -1,3 +1,12 @@
+## [1.3.1](https://github.com/tummalah/ts-rest-api-template/compare/v1.3.0...v1.3.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* **actions:** deploy job correction ([006e13b](https://github.com/tummalah/ts-rest-api-template/commit/006e13ba3e429736ed8368873e49a4816d934ac0))
+
+
+
 # [1.3.0](https://github.com/tummalah/ts-rest-api-template/compare/v1.2.0...v1.3.0) (2022-01-28)
 
 
