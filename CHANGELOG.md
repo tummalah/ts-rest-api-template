@@ -1,3 +1,17 @@
+# [1.3.0](https://github.com/tummalah/ts-rest-api-template/compare/v1.2.0...v1.3.0) (2022-01-28)
+
+
+### Bug Fixes
+
+* **actions:** fixed workflow syntax ([ce639dc](https://github.com/tummalah/ts-rest-api-template/commit/ce639dc37df7b7eb011c37848a3966244d2ab5e6))
+
+
+### Features
+
+* **actions:** added deploy job in git actions ([8e7c523](https://github.com/tummalah/ts-rest-api-template/commit/8e7c5232499d19b25067adb74d629334bcd9f6bd))
+
+
+
 # [1.2.0](https://github.com/tummalah/ts-rest-api-template/compare/v1.1.0...v1.2.0) (2022-01-27)
 
 
