@@ -86,7 +86,7 @@ jobs:
     outputs:
       RELEASE_VERSION: ${{ env.APP_VERSION }}
       
-      PREPARE_DEPLOYMENTS: ${{ steps.changelog.outputs.skipped }
+      PREPARE_DEPLOYMENTS: ${{ steps.changelog.outputs.skipped }}
   
   ###############
   
