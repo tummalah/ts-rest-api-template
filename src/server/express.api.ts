@@ -12,6 +12,7 @@ import path = require("path");
 import errorMiddleware from "./controllers/middleware/errorHandler";
 import * as swaggerDocument from './swagger.json';
 import * as swaggerUi from 'swagger-ui-express';
+import { HealthCheck } from "./helpers/healthChecks/healthCheck";
 
 
 
@@ -19,16 +20,19 @@ import * as swaggerUi from 'swagger-ui-express';
 export class ExpressApi {
   private app: express.Express;
   private oidc: ExpressOIDC;
-  
+  private readonly healthCheck ;
   constructor() {
     
 
     this.app = express();
+    this.healthCheck= HealthCheck.getInstance();
     
     this.configure();
+
   }
 
   private configure() {
+    this.registerHealthCheck();
     this.registerOidc();
     this.registerViews();
     this.configureMiddleware();
@@ -39,6 +43,11 @@ export class ExpressApi {
 
   }
 
+  private registerHealthCheck(){
+    this.app.get('/health', this.healthCheck.OnHealth());
+    this.app.get('/ready',this.healthCheck.OnReady());
+    
+  }
   private registerViews(){
     this.app.set( "views", path.join( __dirname,".." ,"views" ) );
     this.app.set( "view engine", "ejs" );
@@ -88,6 +97,12 @@ export class ExpressApi {
     const server = http.createServer(this.app);
     server.listen(port,()=>console.log("%s started on port:%d",process.env.npm_package_name,port));
     server.on("error", this.onError);
+    process.on('SIGTERM', ()=>{
+      this.healthCheck.setNotReady();
+      console.log('SigTerm Recieved...');
+      console.log("Shutting Down...");
+      process.exit(0);
+    })
    
     
   }
