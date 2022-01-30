@@ -25,6 +25,22 @@ spec:
               readOnly: true
               name: secrets
               subPath: rest-api-template
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+
           resources:
             limits:
               cpu: 250m
