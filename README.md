@@ -74,23 +74,24 @@ A minimal Rest API template trying to follow clean acrhitecture guidelines
 
 
 ### Express Server
-    All the assets related to http server are all located in src/server. All the server related setup is happening in express.api.ts as a single source of truth. 
+    
+  <p>  All the assets related to http server are all located in src/server. All the server related setup is happening in express.api.ts as a single source of truth. </p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Controller
-    Controllers which serves the http resources are located under server/controllers. Each controller is encouraged to find the down stream services using service locators using dependency injection
+  <p>  Controllers which serves the http resources are located under server/controllers. Each controller is encouraged to find the down stream services using service locators using dependency injection </p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Helpers
 
-    The project uses custom helpers located in src/server/helpers to decrease the surface area of dependencies. Notably using custom decorators for controllers and custom logging utility.
+  <p>  The project uses custom helpers located in src/server/helpers to decrease the surface area of dependencies. Notably using custom decorators for controllers and custom logging utility.</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Domain
-    The domain is where all your domain entities and business logic goes. Care should be taken so that the domain is clean and free of framework related assets and should be properly encapuslated using services or usecases.  
+  <p>  The domain is where all your domain entities and business logic goes. Care should be taken so that the domain is clean and free of framework related assets and should be properly encapuslated using services or usecases.  </p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
