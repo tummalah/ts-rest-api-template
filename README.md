@@ -6,8 +6,9 @@
 <!-- PROJECT SHIELDS -->
 
 [![Contributors][contributors-shield]][contributors-url]
+[![Release&Deploy](https://github.com/tummalah/ts-rest-api-template/actions/workflows/build.yml/badge.svg?branch=server-setup)](https://github.com/tummalah/ts-rest-api-template/actions/workflows/build.yml)
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 
 
@@ -128,5 +129,4 @@ A minimal Rest API template trying to follow clean acrhitecture guidelines
 [contributors-shield]: https://img.shields.io/github/contributors/tummalah/ts-rest-api-template.svg?style=for-the-badge
 [contributors-url]: https://github.com/tummalah/ts-rest-api-template/graphs/contributors
 
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/hemanth-tummala-b6490715
+
