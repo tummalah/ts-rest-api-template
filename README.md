@@ -48,7 +48,23 @@
              <ul>
         <li><a href="#domain">Domain</a></li>
       </ul>
+    <li>Devops</li>
+     <ul>
+        <li><a href="#precommit">Pre-Commit</a></li>
+      </ul>
+      <ul>
+        <li><a href="#commit">Commit</a></li>
+      </ul>
+      <ul>
+        <li><a href="#postcommit">Post-Commit</a></li>
+      </ul>
+            <ul>
+        <li><a href="#deploy">Deployments</a></li>
+      </ul>
   </ol>
+  
+  
+  
 </details>
 
 
@@ -94,6 +110,27 @@ A minimal Rest API template trying to follow clean acrhitecture guidelines
 ### Domain
   <p>  The domain is where all your domain entities and business logic goes. Care should be taken so that the domain is clean and free of framework related assets and should be properly encapuslated using services or usecases.  </p>
 
+### PreCommit
+  <p>  The project is setup to run ESLint on precommit  </p>
+
+### Commit
+<p> The project is setup with commit zen utility to generate    conventional  commits <p>
+
+### PostCommit
+<p> Commitlint will kick in on each commit message to prevent non conventional commits. Use the below command to invoke the commit message generator </p>
+
+ ```
+npm run commit
+```
+### Deploy
+
+<p>The project uses Kustomize to generate K8s Manifest  </p>
+
+```
+make deploy-dev
+```
+deploys to Dev cluster
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -119,6 +156,7 @@ A minimal Rest API template trying to follow clean acrhitecture guidelines
 ## Acknowledgments
 
 * [Clean Architecture](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)
+* [Kustomize](https://kustomize.io/)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
