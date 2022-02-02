@@ -5,7 +5,7 @@
 
 <!-- PROJECT SHIELDS -->
 
-[![Contributors][contributors-shield]][contributors-url]
+![issues][issues-shield]
 [![Release&Deploy](https://github.com/tummalah/ts-rest-api-template/actions/workflows/build.yml/badge.svg?branch=server-setup)](https://github.com/tummalah/ts-rest-api-template/actions/workflows/build.yml)
 
 
@@ -110,11 +110,17 @@ A minimal Rest API template trying to follow clean acrhitecture guidelines
 ### Domain
   <p>  The domain is where all your domain entities and business logic goes. Care should be taken so that the domain is clean and free of framework related assets and should be properly encapuslated using services or usecases.  </p>
 
+  <p align="right">(<a href="#top">back to top</a>)</p>
+
 ### PreCommit
   <p>  The project is setup to run ESLint on precommit  </p>
 
+  <p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Commit
 <p> The project is setup with commit zen utility to generate    conventional  commits <p>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### PostCommit
 <p> Commitlint will kick in on each commit message to prevent non conventional commits. Use the below command to invoke the commit message generator </p>
@@ -122,6 +128,8 @@ A minimal Rest API template trying to follow clean acrhitecture guidelines
  ```
 npm run commit
 ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Deploy
 
 <p>The project uses Kustomize to generate K8s Manifest  </p>
@@ -130,6 +138,8 @@ npm run commit
 make deploy-dev
 ```
 deploys to Dev cluster
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -149,9 +159,6 @@ deploys to Dev cluster
 
 
 
-
-
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
@@ -164,7 +171,7 @@ deploys to Dev cluster
 
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/tummalah/ts-rest-api-template.svg?style=for-the-badge
-[contributors-url]: https://github.com/tummalah/ts-rest-api-template/graphs/contributors
+[issues-shield]: https://img.shields.io/github/issues/tummalah/ts-rest-api-template.svg
+
 
 
